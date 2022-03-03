@@ -63,4 +63,25 @@ class Asaas
 
         return ['success' => $response->ok(), 'response' => $response];//Claramente tem como melhorar e padronizar pra esse tipo de request que não retorna
     }
+
+    public function removeClient(string $id)
+    {
+        // dd($this->url . "/customers/$id/");
+
+        $response = Http::delete($this->url . '/customers', [
+            'id' => $id,
+            'access_token' => $this->key,
+        ]);
+
+        return ['success' => $response->ok(), 'response' => $response];//Claramente tem como melhorar e padronizar pra esse tipo de request que não retorna
+    }
+
+    public function restoreClient(string $id)
+    {
+        $response = Http::post($this->url . "/customers/$id/restore", [
+            'access_token' => $this->key,
+        ]);
+
+        return ['success' => $response->ok(), 'response' => $response];//Claramente tem como melhorar e padronizar pra esse tipo de request que não retorna
+    }
 }

@@ -10,9 +10,8 @@ class AsaasController extends Controller
     
     public function index(){
         $asaas = new Asaas();
-        dd($asaas->updateClient('cus_000004811872', [
-            "name" => "Marcelo Almeida",
-            "phone"=> "4738010919",]));
+        // dd($asaas->listClients());
+        dd($asaas->restoreClient('cus_000004809890'));
         //Do something
     }
     /**
@@ -51,5 +50,12 @@ class AsaasController extends Controller
      * dd($asaas->updateClient('cus_000004811872', [
      * "name" => "Marcelo Almeida",
      * "phone"=> "4738010919",]));
+     * 
+     * -->Delete client
+     * dd($asaas->removeClient('cus_000004811872'));
+     * 
+     * ->Restore client
+     * dd($asaas->restoreClient('cus_000004811872'));
+     * 
      */
 }
