@@ -10,7 +10,7 @@ class Asaas
     protected $url;
     protected $key;
 
-    protected function __construct()
+    public function __construct()
     {
         $this->url = env('asaas_url');
         $this->key = env('asaas_key');
@@ -26,18 +26,13 @@ class Asaas
         return 0;
     }
 
-    private function presentResponse(Response $response)
-    {
-        return $response->collect()->toArray()['data']; //Tem como melhorar essa linha?
-    }
-
     public function listClients()
     {
         $response = Http::get($this->url . '/customers', [
             'access_token' => $this->key,
         ]);
 
-        return $this->presentResponse($response);
+        return $response->collect()->toArray()['data']; //Tem como melhorar essa linha?
     }
 
     public function getClientById(string $id)
@@ -47,6 +42,6 @@ class Asaas
             'access_token' => $this->key,
         ]);
 
-        return $this->presentResponse($response);
+        return $response->collect()->toArray(); //Tem como melhorar essa linha?
     }
 }

@@ -10,7 +10,7 @@ class AsaasController extends Controller
     
     public function index(){
         $asaas = new Asaas();
-        dd($asaas->getClientById('cus_000004809894'));
-
+        dd($asaas->listClients());
+        //Do something
     }
 }

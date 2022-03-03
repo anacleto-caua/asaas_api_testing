@@ -19,20 +19,7 @@ use Illuminate\Testing\Assert;
 */
 
 Route::get('/', function () {
-    dd(0);
+    return redirect('/console');
 });
 
 Route::get('/console', [AsaasController::class, 'index']);
-
-//// Asaas Routes
-// Route::name('asaas.')->group(function () {
-
-//     // User
-//     Route::controller(AssasUserController::class)->name('users.')->group(function() {
-
-//         Route::get('assas/users/create/', 'create')->name('create');
-        
-
-//     });
-
-// });
