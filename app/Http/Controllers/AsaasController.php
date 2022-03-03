@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Apiary\Asaas;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AsaasController extends Controller
@@ -10,8 +11,36 @@ class AsaasController extends Controller
     
     public function index(){
         $asaas = new Asaas();
+        dd($asaas->generatePixQRCode('pay_0188115340886390'));
         //Do something
     }
+
+    /**
+     * -->Creat payment
+     * dd($asaas->createPayment('cus_000004811872', 'BOLETO', 5.79, Carbon::now()->addMonth(1), 'Description'));
+     * dd($asaas->createPayment('cus_000004811872', 'PIX', 5.79, Carbon::now()->addMonth(1), 'Description'));
+     * 
+     * -->List payments
+     * dd($asaas->listPayments());
+     * dd($asaas->listPayments(customer:'cus_000004811876'));
+     * dd($asaas->listPayments(billingType:'PIX'));
+     * 
+     * -->Update payment
+     * dd($asaas->updatePayment('pay_9637962509746066'));
+     * 
+     * -->Remove payment
+     * dd($asaas->removePayment('pay_9637962509746066'));
+     * 
+     * -->Restore payment
+     * dd($asaas->restorePayment('pay_9637962509746066'));
+     * 
+     * -->Refund payment
+     * dd($asaas->refundPayment('pay_9637962509746066'));
+     * 
+     * -->Get ticket field id
+     * 
+    */
+
     /**
      * Sample Codes
      * 
