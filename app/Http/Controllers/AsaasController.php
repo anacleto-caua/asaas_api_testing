@@ -10,8 +10,6 @@ class AsaasController extends Controller
     
     public function index(){
         $asaas = new Asaas();
-        // dd($asaas->listClients());
-        dd($asaas->restoreClient('cus_000004809890'));
         //Do something
     }
     /**
