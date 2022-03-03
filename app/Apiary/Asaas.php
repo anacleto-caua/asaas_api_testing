@@ -26,11 +26,20 @@ class Asaas
         return 0;
     }
 
-    public function listClients()
+    public function createClient(array $data)
     {
-        $response = Http::get($this->url . '/customers', [
+        $response = Http::post($this->url . '/customers/', array_merge([
             'access_token' => $this->key,
-        ]);
+        ], $data));
+
+        return ['success' => $response->ok(), 'response' => $response];//Claramente tem como melhorar e padronizar pra esse tipo de request que não retorna
+    }
+
+    public function listClients(array $filters=[])
+    {
+        $response = Http::get($this->url . '/customers', array_merge([
+            'access_token' => $this->key,
+        ],$filters));
 
         return $response->collect()->toArray()['data']; //Tem como melhorar essa linha?
     }
@@ -43,5 +52,15 @@ class Asaas
         ]);
 
         return $response->collect()->toArray(); //Tem como melhorar essa linha?
+    }
+
+    public function updateClient(string $id, array $newData)
+    {      
+        $response = Http::post($this->url . '/customers/', array_merge([
+            'id' => $id,
+            'access_token' => $this->key,
+        ], $newData));
+
+        return ['success' => $response->ok(), 'response' => $response];//Claramente tem como melhorar e padronizar pra esse tipo de request que não retorna
     }
 }
