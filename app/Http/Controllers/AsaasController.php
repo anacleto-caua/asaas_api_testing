@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Apiary\Asaas;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Apiary\Asaas\AsaasClient;
 
 class AsaasController extends Controller
 {
     
     public function index(){
-        $asaas = new Asaas();
-        dd($asaas->generatePixQRCode('pay_0188115340886390'));
+
+        $asaas_client = new AsaasClient();
+        $asaas_client->createClient('Ronaldo', '0000203123');
         //Do something
     }
 
